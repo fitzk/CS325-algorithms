@@ -1,6 +1,6 @@
 ######################################################################
 # Project Group:  1                                                  #
-# Group Members:  Eric Cruz, Baljot Sighn, Kayla Fitzsimmons         #
+# Group Members:  Eric Cruz, Baljot Singh, Kayla Fitzsimmons         #
 # Course:         CS325-400                                          #
 # Assignment:     Project 1                                          #
 # File:           timer.py                                           #
@@ -23,7 +23,7 @@ f.write(h_value)
 
 # time algorithm
 start = time.time()
-result = maxSub.# function to be tested
+result = maxSub.maxSubEnum() # function to be tested
 end = time.time()
 
 # format output
