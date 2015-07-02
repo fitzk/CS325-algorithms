@@ -22,9 +22,9 @@ h_value = str(header)
 f.write(h_value)
 
 # time algorithm
-start = time.time()
+start = time.clock()
 result = maxSub.maxSubEnum() # function to be tested
-end = time.time()
+end = time.clock()
 
 # format output
 r = #repr(size of input) + '\t'+ repr(result) +'\t'+repr(end - start)+'\n'
