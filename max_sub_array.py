@@ -1,6 +1,6 @@
 ######################################################################
 # Project Group:  1                                                  #
-# Group Members:  Eric Cruz, Baljot Sighn, Kayla Fitzsimmons         #
+# Group Members:  Eric Cruz, Baljot Singh, Kayla Fitzsimmons         #
 # Course:         CS325-400                                          #
 # Assignment:     Project 1                                          #
 # File:           max_sub_array.py                                   #
@@ -18,6 +18,20 @@ class MaxSub(object):
         #   compute a[i]+a[i+1]+...+a[j-1]+a[j]
         #   keep max sum found so far
         # keep max sum found
+    
+    def maxSubEnum(self, arr):
+        sum = 0
+        temp = []
+        maxSum = float("-inf")
+        for i in range(0, len(arr)):
+            for j in range(i, len(arr)):
+                for k in range(i, j + 1):
+                    sum = sum + arr[k]
+                if sum > maxSum:
+                    maxSum = sum
+                    temp = arr[i:j+1]
+                sum = 0
+        return maxSum, temp
 
 
 
