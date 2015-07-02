@@ -37,7 +37,7 @@ class MaxSub(object):
 
 
     #Algorithm 2: Better Enumeration
-    def maxSubArray2(self, arr):
+    def maxSubEnum2(self, arr):
         sum = 0
         temp = []
         maxSum = float("-inf")
