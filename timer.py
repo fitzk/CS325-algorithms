@@ -11,7 +11,7 @@ from max_sub_array import MaxSub
 #set up command line args for inputing testData
 
 #instance of MaxSub object
-maxSub = maxSub()
+maxSub = MaxSub()
 
 #creates a file for output
 f = open('output','w')
