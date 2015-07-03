@@ -18,7 +18,7 @@ class MaxSub(object):
         #   compute a[i]+a[i+1]+...+a[j-1]+a[j]
         #   keep max sum found so far
         # keep max sum found
-    
+
     def maxSubEnum(self, arr):
         sum = 0
         temp = []
@@ -49,3 +49,48 @@ class MaxSub(object):
                     temp = arr[i:j + 1]
             sum = 0
         return maxSum, temp
+
+    #Algorithm 3: Divide and Conquer
+    def findMaxSubArray(self,arr,low,high):
+        if high == low:
+            return low, high, arr[low]
+        else:
+            mid = (low + high) // 2
+            leftLow,leftHigh,leftSum = self.findMaxSubArray(arr,low,mid)
+            rightLow, rightHigh, rightSum = self.findMaxSubArray(arr,mid+1, high)
+            crossLow, crossHigh, crossSum = self.findMaxCrossingSubArray(arr,low,mid,high)
+
+        if leftSum >= rightSum and leftSum >= crossSum:
+            return leftLow, leftHigh, leftSum
+        if rightSum >= leftSum and rightSum >= crossSum:
+            return rightLow, rightHigh, rightSum
+        else:
+            return crossLow, crossHigh, crossSum
+
+    # helper function finds Maximum crossing sub array
+    def findMaxCrossingSubArray(self,arr,low,mid,high):
+        leftSum = float("-inf")
+        isSum = 0
+        i = mid
+        maxLeft = float("-inf")
+        maxRight=float("-inf")
+
+        while i < low:
+            isSum = isSum + arr[i]
+            if isSum > leftSum:
+                leftSum = isSum
+                maxLeft = i
+            i = i - 1
+
+        j = mid + 1
+        rightSum = float("-inf")
+        isSum = 0
+        while j < high:
+            isSum = isSum + arr[j]
+
+            if isSum > rightSum:
+                rightSum = isSum
+                maxRight = j
+            j= j + 1
+
+        return maxLeft,maxRight,leftSum+rightSum
