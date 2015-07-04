@@ -97,14 +97,15 @@ class MaxSub(object):
 		
 		
 	# Algorithm 4: Linear-time
-	def linearMSA(arr):
-		maxSoFar = 0
-		maxEndingHere = 0
-		for i in arr[1:]:
-			maxEndingHere = maxEndingHere + i
-			if maxEndingHere < 0:
-				maxEndingHere = 0
-			if maxSoFar < maxEndingHere:
-				maxSoFar = maxEndingHere
+    def linearMSA(arr):
+        maxSoFar = 0
+        maxEndingHere = 0
+        for i in arr[1:]:
+            maxEndingHere = maxEndingHere + i
+            if maxEndingHere < 0:
+                maxEndingHere = 0
+            if maxSoFar < maxEndingHere:
+                maxSoFar = maxEndingHere
 		
-		return maxSoFar
+            return maxSoFar
+		
