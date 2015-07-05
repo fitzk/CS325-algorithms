@@ -8,17 +8,11 @@
 #                 the max sub array problem                          #
 ######################################################################
 class MaxSub(object):
+
     # Algorithm 1: Enumeration
     #   enumeration for max subarray
     #   evaluates every possible solution
     #   analysis (O(n^2) pairs) x (O(n) time to compute each sum)= O(n^3) time
-
-    # def MaxSubEnum(a):
-        # for each pair(i,j) with 1 <= i <= j <= n
-        #   compute a[i]+a[i+1]+...+a[j-1]+a[j]
-        #   keep max sum found so far
-        # keep max sum found
-
     def maxSubEnum(self, arr):
         sum = 0
         temp = []
@@ -51,51 +45,52 @@ class MaxSub(object):
         return maxSum, temp
 
     #Algorithm 3: Divide and Conquer
-    def findMaxSubArray(self,arr,low,high):
+    def find_max_sub_array(self,arr,low,high):
         if high == low:
             return low, high, arr[low]
         else:
-            mid = (low + high) // 2
-            leftLow,leftHigh,leftSum = self.findMaxSubArray(arr,low,mid)
-            rightLow, rightHigh, rightSum = self.findMaxSubArray(arr,mid+1, high)
-            crossLow, crossHigh, crossSum = self.findMaxCrossingSubArray(arr,low,mid,high)
+            mid = (high+low)/2
+            left_low,left_high,left_sum = self.find_max_sub_array(arr,low,mid)
+            right_low, right_high, right_sum = self.find_max_sub_array(arr,mid+1,high)
+            cross_low, cross_high, cross_sum = self.find_max_crossing_sub_array(arr,low,mid,high)
 
-        if leftSum >= rightSum and leftSum >= crossSum:
-            return leftLow, leftHigh, leftSum
-        if rightSum >= leftSum and rightSum >= crossSum:
-            return rightLow, rightHigh, rightSum
+        if left_sum >= right_sum and left_sum >= cross_sum:
+            return left_low, left_high, left_sum
+        if right_sum >= left_sum and right_sum >= cross_sum:
+            return right_low, right_high, right_sum
         else:
-            return crossLow, crossHigh, crossSum
+            return cross_low, cross_high, cross_sum
+
 
     # helper function finds Maximum crossing sub array
-    def findMaxCrossingSubArray(self,arr,low,mid,high):
-        leftSum = float("-inf")
-        isSum = 0
+    def find_max_crossing_sub_array(self,arr,low,mid,high):
+        left_sum = float("-inf")
+        is_sum = 0
         i = mid
-        maxLeft = float("-inf")
-        maxRight=float("-inf")
+        max_left = float("-inf")
+        max_right=float("-inf")
 
         while i < low:
-            isSum = isSum + arr[i]
-            if isSum > leftSum:
-                leftSum = isSum
-                maxLeft = i
+            is_sum = is_sum + arr[i]
+            if is_sum > left_sum:
+                left_sum = is_sum
+                max_left = i
             i = i - 1
 
         j = mid + 1
-        rightSum = float("-inf")
-        isSum = 0
+        right_sum = float("-inf")
+        is_sum = 0
         while j < high:
-            isSum = isSum + arr[j]
+            is_sum = is_sum + arr[j]
 
-            if isSum > rightSum:
-                rightSum = isSum
-                maxRight = j
+            if is_sum > right_sum:
+                right_sum = is_sum
+                max_right = j
             j= j + 1
 
-        return maxLeft,maxRight,leftSum+rightSum
-		
-		
+        return max_left,max_right,left_sum + right_sum
+
+
 	# Algorithm 4: Linear-time
     def linearMSA(arr):
         maxSoFar = 0
@@ -106,6 +101,5 @@ class MaxSub(object):
                 maxEndingHere = 0
             if maxSoFar < maxEndingHere:
                 maxSoFar = maxEndingHere
-		
+
             return maxSoFar
-		
