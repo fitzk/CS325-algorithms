@@ -3,7 +3,7 @@
 # Group Members:  Eric Cruz, Baljot Singh, Kayla Fitzsimmons         #
 # Course:         CS325-400                                          #
 # Assignment:     Project 1                                          #
-# File:           timer.py                                           #
+# File:           time_analysis.py                                           #
 # Description:    Calculates runtime for max sub array algorithms    #
 ######################################################################
 from max_sub_array import MaxSub
