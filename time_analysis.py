@@ -34,12 +34,12 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
-    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
     s = 'Average time for 10 arrays of different values for algorithm 1 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
+    runTime = 0
     
 count = 0
 result = 0
@@ -60,12 +60,12 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
-    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
     s = 'Average time for 10 arrays of different values for algorithm 2 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
+    runTime = 0
     
 count = 0
 result = 0
@@ -86,12 +86,12 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
-    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
     s = 'Average time for 10 arrays of different values for algorithm 3 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
+    runTime = 0
     
 count = 0
 result = 0
@@ -112,10 +112,10 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
-    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
     s = 'Average time for 10 arrays of different values for algorithm 4 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
+    runTime = 0
 f3.close()
