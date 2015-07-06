@@ -3,103 +3,90 @@
 # Group Members:  Eric Cruz, Baljot Singh, Kayla Fitzsimmons         #
 # Course:         CS325-400                                          #
 # Assignment:     Project 1                                          #
-# File:           max_sub_array.py                                   #
-# Description:    Object that contains Four algorithms that solve    #
-#                 the max sub array problem                          #
+# File:           timer.py                                           #
+# Description:    Calculates runtime for max sub array algorithms    #
 ######################################################################
-class MaxSub(object):
+from max_sub_array import MaxSub
+import random
+import time
+import re
 
-    # Algorithm 1: Enumeration
-    #   enumeration for max subarray
-    #   evaluates every possible solution
-    #   analysis (O(n^2) pairs) x (O(n) time to compute each sum)= O(n^3) time
-    def maxSubEnum(self, arr):
-        sum = 0
-        temp = []
-        maxSum = float("-inf")
-        for i in range(0, len(arr)):
-            for j in range(i, len(arr)):
-                for k in range(i, j + 1):
-                    sum = sum + arr[k]
-                if sum > maxSum:
-                    maxSum = sum
-                    temp = arr[i:j+1]
-                sum = 0
-        return maxSum, temp
+array = []
+count = 0
+result = 0
+arr = []
 
+#while count < 10:
+    #array.append(random.randint(-50,100))
+    #count = count + 1;
 
+#set up command line args for inputing testData
 
+#instance of MaxSub object
+maxSub = MaxSub()
 
-    #Algorithm 2: Better Enumeration
-    def maxSubEnum2(self, arr):
-        sum = 0
-        temp = []
-        maxSum = float("-inf")
-        for i in range(0, len(arr)):
-            for j in range(i, len(arr)):
-                sum = sum + arr[j]
-                if sum > maxSum:
-                    maxSum = sum
-                    temp = arr[i:j + 1]
-            sum = 0
-        return maxSum, temp
-
-    #Algorithm 3: Divide and Conquer
-    def find_max_sub_array(self,arr,low,high):
-        if high == low:
-            return low, high, arr[low]
-        else:
-            mid = (high+low)/2
-            left_low,left_high,left_sum = self.find_max_sub_array(arr,low,mid)
-            right_low, right_high, right_sum = self.find_max_sub_array(arr,mid+1,high)
-            cross_low, cross_high, cross_sum = self.find_max_crossing_sub_array(arr,low,mid,high)
-
-        if left_sum >= right_sum and left_sum >= cross_sum:
-            return left_low, left_high, left_sum
-        if right_sum >= left_sum and right_sum >= cross_sum:
-            return right_low, right_high, right_sum
-        else:
-            return cross_low, cross_high, cross_sum
+#creates a file for output
+f = open('MSS_Problems.txt','r')
+f2 = open('MSS_Results.txt','w')
 
 
-    # helper function finds Maximum crossing sub array
-    def find_max_crossing_sub_array(self,arr,low,mid,high):
-        left_sum = float("-inf")
-        is_sum = 0
-        i = mid
-        max_left = float("-inf")
-        max_right=float("-inf")
+for line in f:
+    array =  map(int, re.findall(r"[-+]?\d*\-\d+|\d+", line))
 
-        while i < low:
-            is_sum = is_sum + arr[i]
-            if is_sum > left_sum:
-                left_sum = is_sum
-                max_left = i
-            i = i - 1
+    # time algorithm1
+    start = time.clock()
+    result, arr = maxSub.maxSubEnum(array) # function to be tested
+    end = time.clock()
 
-        j = mid + 1
-        right_sum = float("-inf")
-        is_sum = 0
-        while j < high:
-            is_sum = is_sum + arr[j]
+    #Write to file results of algorithm1
+    s = 'Algorithm 1' + '\n' + str(array)+'\n' + str(arr) + '\n' + str(result) + '\n' + 'Time Taken: ' + str(end - start) + '\n' + '\n'
+    f2.write(s)
 
-            if is_sum > right_sum:
-                right_sum = is_sum
-                max_right = j
-            j= j + 1
+    #empty arr
+    del arr[:]
+    arr[:] = []
 
-        return max_left,max_right,left_sum + right_sum
+    # time algorithm2
+    start = time.clock()
+    result, arr = maxSub.maxSubEnum2(array) # function to be tested
+    end = time.clock()
 
+    #Write to file results of algorithm2
+    s = 'Algorithm 2' + '\n' + str(array)+'\n' + str(arr) + '\n' + str(result) + '\n' + 'Time Taken: ' + str(end - start) + '\n' + '\n'
+    f2.write(s)
 
-	# Algorithm 4: Linear-time
-    def linearMSA(arr):
-        maxSoFar = 0
-        maxEndingHere = 0
-        for i in arr[1:]:
-            maxEndingHere = maxEndingHere + i
-            if maxEndingHere < 0:
-                maxEndingHere = 0
-            if maxSoFar < maxEndingHere:
-                maxSoFar = maxEndingHere
+    #empty arr 
+    del arr[:]
+    arr[:] = []
 
-            return maxSoFar
+    # time algorithm3
+    start = time.clock()
+    result, arr = maxSub.find_max_sub_array(array,0,len(array) - 1) # function to be tested
+    end = time.clock()
+
+    #Write to file results of algorithm3
+    s = 'Algorithm 3' + '\n' + str(array)+'\n' + str(arr) + '\n' + str(result) + '\n' + 'Time Taken: ' + str(end - start) + '\n' + '\n'
+    f2.write(s)
+    
+    #empty arr 
+    del arr[:]
+    arr[:] = []
+
+    # time algorithm4
+    start = time.clock()
+    result, arr = maxSub.linearMSA(array) # function to be tested
+    end = time.clock()
+
+    #Write to file results of algorithm4
+    s = 'Algorithm 4' + '\n' + str(array)+'\n' + str(arr) + '\n' + str(result) + '\n' + 'Time Taken: ' + str(end - start) + '\n' + '\n'
+    f2.write(s)
+
+    #empty arr and array
+    del arr[:]
+    arr[:] = []
+    del array[:]
+    array[:] = []
+
+# close file
+f.close()
+f2.close()
