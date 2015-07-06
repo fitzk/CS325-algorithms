@@ -18,19 +18,25 @@ count = 0
 result = 0
 runTime = 0
 f3 = open('Time_Results.txt','a')
-while count < 10:
-    while result < 500:
-        array.append(random.randint(-50,100))
-        result = result + 1;
-    start = time.clock()
-    maxSub.maxSubEnum(array)
-    end = time.clock()
-    size = len(array) 
-    runTime = runTime + (end - start)
-    count = count + 1
-    result = 0
-    del array[:]
-    array[:] = []
-s = 'Average time for 10 arrays of different values for algorithm 1 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
-f3.write(s)
+cnt = 0
+num = 100
+while cnt < 10:
+    while count < 10:
+        while result < num:
+            array.append(random.randint(-50,100))
+            result = result + 1;
+        start = time.clock()
+        maxSub.maxSubEnum(array)
+        end = time.clock()
+        size = len(array) 
+        runTime = runTime + (end - start)
+        count = count + 1
+        result = 0
+        del array[:]
+        array[:] = []
+    count = 0
+    cnt = cnt + 1
+    num = num + 100
+    s = 'Average time for 10 arrays of different values for algorithm 1 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
+    f3.write(s)
 f3.close()
