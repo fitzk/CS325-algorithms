@@ -34,6 +34,7 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
+    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
@@ -59,6 +60,7 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
+    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
@@ -84,6 +86,7 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
+    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
@@ -109,6 +112,7 @@ while cnt < 10:
         result = 0
         del array[:]
         array[:] = []
+    runTime = 0
     count = 0
     cnt = cnt + 1
     num = num + 100
