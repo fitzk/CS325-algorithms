@@ -14,12 +14,16 @@ import time
 maxSub = MaxSub()
 
 array = []
+
+#opening a file where results will be saved
 f3 = open('Time_Results.txt','a')
 count = 0
 result = 0
 runTime = 0
 cnt = 0
 num = 100
+
+#Calculating time for algorithm 1 with 10 different sizes of array and each size with 10 different arrays
 while cnt < 10:
     while count < 10:
         while result < num:
@@ -37,10 +41,13 @@ while cnt < 10:
     count = 0
     cnt = cnt + 1
     num = num + 100
+    
+    #Write the average time for 10 arrays of same size but different elements to file
     s = 'Average time for 10 arrays of different values for algorithm 1 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
     runTime = 0
     
+#Calculating time for algorithm 2 with 10 different sizes of array and each size with 10 different arrays
 count = 0
 result = 0
 runTime = 0
@@ -63,10 +70,13 @@ while cnt < 10:
     count = 0
     cnt = cnt + 1
     num = num + 100
+    
+    #Write the average time for 10 arrays of same size but different elements to file
     s = 'Average time for 10 arrays of different values for algorithm 2 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
     runTime = 0
     
+#Calculating time for algorithm 3 with 10 different sizes of array and each size with 10 different arrays
 count = 0
 result = 0
 runTime = 0
@@ -89,10 +99,13 @@ while cnt < 10:
     count = 0
     cnt = cnt + 1
     num = num + 100
+    
+    #Write the average time for 10 arrays of same size but different elements to file
     s = 'Average time for 10 arrays of different values for algorithm 3 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
     runTime = 0
     
+#Calculating time for algorithm 4 with 10 different sizes of array and each size with 10 different arrays
 count = 0
 result = 0
 runTime = 0
@@ -115,6 +128,8 @@ while cnt < 10:
     count = 0
     cnt = cnt + 1
     num = num + 100
+    
+    #Write the average time for 10 arrays of same size but different elements to file
     s = 'Average time for 10 arrays of different values for algorithm 4 for size ' + str(size) + ': ' +  str(runTime/10) +'\n'
     f3.write(s)
     runTime = 0
