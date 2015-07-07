@@ -4,7 +4,7 @@
 # Course:         CS325-400                                          #
 # Assignment:     Project 1                                          #
 # File:           test.py                                            #
-# Description:    Test max sub array algorithms for correctess       #
+# Description:    Test max sub array algorithms for correctness       #
 ######################################################################
 from max_sub_array import MaxSub
 
