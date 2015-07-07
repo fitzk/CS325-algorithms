@@ -3,32 +3,31 @@
 # Group Members:  Eric Cruz, Baljot Singh, Kayla Fitzsimmons         #
 # Course:         CS325-400                                          #
 # Assignment:     Project 1                                          #
-# File:           timer.py                                           #
-# Description:    Calculates runtime for max sub array algorithms    #
+# File:           test.py                                            #
+# Description:    Test max sub array algorithms for correctess       #
 ######################################################################
 from max_sub_array import MaxSub
-import random
+
 import time
 import re
+import sys
 
 array = []
 count = 0
 result = 0
 arr = []
 
-#while count < 10:
-    #array.append(random.randint(-50,100))
-    #count = count + 1;
-
-#set up command line args for inputing testData
-
 #instance of MaxSub object
 maxSub = MaxSub()
 
-#creates a file for output
-f = open('MSS_Problems.txt','r')
-f2 = open('MSS_Results.txt','w')
+#creates a file object for input and output
+try:
+    f = open('MSS_Problems.txt','r')
+except IOError:
+    print 'Error in opening file MSS_Problems.txt'
+    sys.exit(-1)
 
+f2 = open('MSS_Results.txt','w')
 
 for line in f:
     array =  map(int, re.findall(r"[-+]?\d*\-\d+|\d+", line))
